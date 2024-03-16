@@ -1,0 +1,70 @@
+[gd_scene load_steps=13 format=3 uid="uid://rx3f3eu4q51v"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_2qtve"]
+[ext_resource type="PackedScene" uid="uid://drrjdrsmkcks8" path="res://scenes/bullet.tscn" id="2_f541u"]
+[ext_resource type="Texture2D" uid="uid://bs78w6ub1lfd" path="res://assets/sprites/ron_anim1.png" id="2_s7bae"]
+[ext_resource type="Texture2D" uid="uid://dmtlo3npisiwn" path="res://assets/sprites/ron_anim2.png" id="3_jj0c0"]
+[ext_resource type="Texture2D" uid="uid://b1lrfv1osex3m" path="res://assets/sprites/ron_anim3.png" id="4_qm8ht"]
+[ext_resource type="Texture2D" uid="uid://cd2ihs4agqicf" path="res://assets/sprites/ron_anim4.png" id="5_53e8f"]
+[ext_resource type="Texture2D" uid="uid://cye7kcsrbfovs" path="res://assets/sprites/ron_anim5.png" id="6_2m6ht"]
+[ext_resource type="Texture2D" uid="uid://b6y6f76xt280i" path="res://assets/sprites/ron_anim6.png" id="7_c3li2"]
+[ext_resource type="Texture2D" uid="uid://cpks1vivwle13" path="res://assets/sprites/ron_anim7.png" id="8_iau0j"]
+[ext_resource type="Texture2D" uid="uid://ce0lwheafijcs" path="res://assets/sprites/ron_anim8.png" id="9_kmqxb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rsenh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s7bae")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jj0c0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qm8ht")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_53e8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2m6ht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_c3li2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_iau0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kmqxb")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlc3a"]
+size = Vector2(2, 2)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("anim")]
+script = ExtResource("1_2qtve")
+anim = NodePath("AnimatedSprite2D")
+bullet = ExtResource("2_f541u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rsenh")
+animation = &"run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 7)
+shape = SubResource("RectangleShape2D_dlc3a")

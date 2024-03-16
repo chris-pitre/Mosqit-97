@@ -1,0 +1,83 @@
+[gd_scene load_steps=19 format=3 uid="uid://2tdjiwdlghp7"]
+
+[ext_resource type="Texture2D" uid="uid://buet5e3p7nd2d" path="res://assets/sprites/explosion/exp2_0.png" id="1_hajr2"]
+[ext_resource type="Texture2D" uid="uid://clg5nnm3a5a6x" path="res://assets/sprites/explosion/exp2_1.png" id="2_c5q87"]
+[ext_resource type="Texture2D" uid="uid://cmarw7pfiv1jx" path="res://assets/sprites/explosion/exp2_2.png" id="3_ceclj"]
+[ext_resource type="Texture2D" uid="uid://c6walpmy2x20k" path="res://assets/sprites/explosion/exp2_3.png" id="4_7a8br"]
+[ext_resource type="Texture2D" uid="uid://du30tq4u0r71p" path="res://assets/sprites/explosion/exp2_4.png" id="5_oie0u"]
+[ext_resource type="Texture2D" uid="uid://by4kjukimgebp" path="res://assets/sprites/explosion/exp2_5.png" id="6_mfp77"]
+[ext_resource type="Texture2D" uid="uid://4in5drhe4t1s" path="res://assets/sprites/explosion/exp2_6.png" id="7_m8onv"]
+[ext_resource type="Texture2D" uid="uid://dgdl00ir1b85k" path="res://assets/sprites/explosion/exp2_7.png" id="8_8ok3k"]
+[ext_resource type="Texture2D" uid="uid://byf2ih2w6sd65" path="res://assets/sprites/explosion/exp2_8.png" id="9_uejf5"]
+[ext_resource type="Texture2D" uid="uid://bisqyhpg53g1i" path="res://assets/sprites/explosion/exp2_9.png" id="10_wa5lb"]
+[ext_resource type="Texture2D" uid="uid://dvnc2gas3d6yx" path="res://assets/sprites/explosion/exp2_10.png" id="11_taw48"]
+[ext_resource type="Texture2D" uid="uid://eiu42egp4vet" path="res://assets/sprites/explosion/exp2_11.png" id="12_lsfij"]
+[ext_resource type="Texture2D" uid="uid://cqixowmqlglqj" path="res://assets/sprites/explosion/exp2_12.png" id="13_nh6ao"]
+[ext_resource type="Texture2D" uid="uid://cdamsj3ca5li4" path="res://assets/sprites/explosion/exp2_13.png" id="14_ht173"]
+[ext_resource type="Texture2D" uid="uid://cbp5hdpgd1dhf" path="res://assets/sprites/explosion/exp2_14.png" id="15_k4m7t"]
+[ext_resource type="Texture2D" uid="uid://7aa4ulud7rpw" path="res://assets/sprites/explosion/exp2_15.png" id="16_qh6wp"]
+[ext_resource type="Script" path="res://scenes/explosion.gd" id="17_3rbbn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_su3gy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hajr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c5q87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ceclj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7a8br")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oie0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mfp77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_m8onv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8ok3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_uejf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wa5lb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_taw48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_lsfij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_nh6ao")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ht173")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_k4m7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_qh6wp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="Explosion" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_su3gy")
+frame = 15
+frame_progress = 1.0
+script = ExtResource("17_3rbbn")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
