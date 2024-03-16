@@ -56,14 +56,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlc3a"]
 size = Vector2(2, 2)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("anim")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("anim") groups=["player"]]
 script = ExtResource("1_2qtve")
 anim = NodePath("AnimatedSprite2D")
 bullet = ExtResource("2_f541u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rsenh")
-animation = &"run"
+animation = &"idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 7)

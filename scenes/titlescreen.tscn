@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://2ivgyxggbvlh"]
+[gd_scene load_steps=10 format=3 uid="uid://2ivgyxggbvlh"]
 
 [ext_resource type="Texture2D" uid="uid://c3i6so2318q7a" path="res://assets/title/1.png" id="1_yn0bx"]
 [ext_resource type="Texture2D" uid="uid://d2q08q0qn7jb6" path="res://assets/title/2.png" id="2_vm8p3"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bef3n1i47s8v2" path="res://assets/title/4.png" id="4_0w8q5"]
 [ext_resource type="Texture2D" uid="uid://dt8q04cihm0mm" path="res://assets/title/titlescreen.png" id="5_ylo3o"]
 [ext_resource type="Script" path="res://titlescreen.gd" id="6_c76js"]
+[ext_resource type="PackedScene" uid="uid://dmjmwbhp4mdkd" path="res://scenes/level.tscn" id="7_s3o5t"]
+[ext_resource type="PackedScene" uid="uid://btpqws8x3cftc" path="res://scenes/ui.tscn" id="8_5s0ap"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gf4rh"]
 animations = [{
@@ -57,3 +59,5 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_gf4rh")
 animation = &"title"
 script = ExtResource("6_c76js")
+level = ExtResource("7_s3o5t")
+ui = ExtResource("8_5s0ap")

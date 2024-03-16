@@ -76,8 +76,6 @@ animations = [{
 
 [node name="Explosion" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_su3gy")
-frame = 15
-frame_progress = 1.0
 script = ExtResource("17_3rbbn")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

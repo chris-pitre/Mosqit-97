@@ -18,6 +18,7 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 AudioSingleton="*res://src/audio_singleton.gd"
+Global="*res://src/global.gd"
 
 [display]
 

@@ -1,14 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmjmwbhp4mdkd"]
+[gd_scene load_steps=8 format=3 uid="uid://dmjmwbhp4mdkd"]
 
 [ext_resource type="PackedScene" uid="uid://rx3f3eu4q51v" path="res://scenes/player.tscn" id="1_f5sh1"]
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_n2k20"]
 [ext_resource type="Texture2D" uid="uid://basu1y5tuuhrp" path="res://assets/backgrounds/bg1.png" id="2_3divd"]
+[ext_resource type="Shader" path="res://assets/shaders/wave.gdshader" id="3_ceuki"]
 [ext_resource type="PackedScene" uid="uid://decy3cuo6u4n7" path="res://scenes/enemy.tscn" id="4_i63jf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_volnk"]
+shader = ExtResource("3_ceuki")
+shader_parameter/height = 10.0
+shader_parameter/frequency = 100.0
+shader_parameter/speed = 2.0
+
+[sub_resource type="Curve2D" id="Curve2D_wknkc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 512, 0, 0, 0, 0, 0, 512, -72, 0, 0, 0, 0, 0, -72, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_n2k20")
+enemy_scene = ExtResource("4_i63jf")
 
 [node name="Background" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_volnk")
 position = Vector2(256, 224)
 scale = Vector2(2, 2)
 texture = ExtResource("2_3divd")
@@ -17,6 +32,15 @@ texture = ExtResource("2_3divd")
 position = Vector2(262, 410)
 
 [node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
 
 [node name="Enemy" parent="." instance=ExtResource("4_i63jf")]
 position = Vector2(234, 16)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_wknkc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

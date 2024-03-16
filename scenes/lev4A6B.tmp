@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmjmwbhp4mdkd"]
+
+[ext_resource type="PackedScene" uid="uid://rx3f3eu4q51v" path="res://scenes/player.tscn" id="1_f5sh1"]
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_n2k20"]
+[ext_resource type="Texture2D" uid="uid://basu1y5tuuhrp" path="res://assets/backgrounds/bg1.png" id="2_3divd"]
+[ext_resource type="PackedScene" uid="uid://decy3cuo6u4n7" path="res://scenes/enemy.tscn" id="4_i63jf"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_n2k20")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(256, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("2_3divd")
+
+[node name="Player" parent="." instance=ExtResource("1_f5sh1")]
+position = Vector2(262, 410)
+
+[node name="MobTimer" type="Timer" parent="."]
+
+[node name="Enemy" parent="." instance=ExtResource("4_i63jf")]
+position = Vector2(234, 16)

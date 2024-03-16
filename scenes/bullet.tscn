@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://drrjdrsmkcks8"]
+[gd_scene load_steps=5 format=3 uid="uid://drrjdrsmkcks8"]
 
 [ext_resource type="Script" path="res://scenes/bullet.gd" id="1_xj1qe"]
 [ext_resource type="Texture2D" uid="uid://wf13gm1balks" path="res://assets/sprites/bullet.png" id="2_20ktj"]
+[ext_resource type="PackedScene" uid="uid://2tdjiwdlghp7" path="res://scenes/explosion.tscn" id="2_r478r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tn1uk"]
 size = Vector2(4, 5)
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_xj1qe")
+explosion = ExtResource("2_r478r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_20ktj")

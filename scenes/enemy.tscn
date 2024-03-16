@@ -1,16 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://decy3cuo6u4n7"]
+[gd_scene load_steps=5 format=3 uid="uid://decy3cuo6u4n7"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_5d735"]
 [ext_resource type="Texture2D" uid="uid://dojm5qy52xtx1" path="res://assets/sprites/mosqit1.png" id="1_5yeor"]
+[ext_resource type="Texture2D" uid="uid://beeb00cekelgq" path="res://assets/sprites/mosqit2.png" id="3_ivc6g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_26npc"]
-radius = 2.0
+radius = 6.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="StaticBody2D" groups=["enemy"]]
+disable_mode = 2
 script = ExtResource("1_5d735")
+tex_1 = ExtResource("1_5yeor")
+tex_2 = ExtResource("3_ivc6g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_5yeor")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
 shape = SubResource("CircleShape2D_26npc")

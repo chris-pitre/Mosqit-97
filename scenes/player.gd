@@ -35,5 +35,6 @@ func _physics_process(delta):
 
 func shoot():
 	var b = bullet.instantiate()
-	add_child(b)
+	get_parent().add_child(b)
+	b.is_player_bullet = true
 	b.global_position = global_position

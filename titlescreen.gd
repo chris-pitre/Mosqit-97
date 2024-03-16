@@ -1,5 +1,8 @@
 extends AnimatedSprite2D
 
+@export var level: PackedScene
+@export var ui: PackedScene
+
 var index = 0
 var playing = true
 
@@ -45,4 +48,10 @@ func play_next():
 		4:
 			index = 0
 			play("title")
+			var level_instance = level.instantiate()
+			get_tree().root.add_child(level_instance)
+			var ui_instance = ui.instantiate()
+			get_tree().root.add_child(ui_instance)
+			queue_free()
+			
 	playing = false
