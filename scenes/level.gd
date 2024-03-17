@@ -5,6 +5,8 @@ extends Node2D
 @onready var enemy_timer: Timer = $MobTimer
 @onready var spawn_locations: PathFollow2D = $Path2D/PathFollow2D
 
+func _init():
+	Global.its_over.connect(_end_it_all)
 	
 
 func _on_mob_timer_timeout():
@@ -14,3 +16,6 @@ func _on_mob_timer_timeout():
 	spawn_locations.progress_ratio = randf()
 	enemy.position = spawn_locations.position
 	add_child(enemy)
+
+func _end_it_all():
+	queue_free()

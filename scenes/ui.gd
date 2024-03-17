@@ -10,6 +10,7 @@ func _ready():
 	Global.update_ui.connect(_update_label)
 	Global.show_menu.connect(_show_menu)
 	Global.hide_menu.connect(_hide_menu)
+	Global.its_over.connect(_end_it_all)
 
 func _update_label():
 	$MarginContainer/MosquitoLabel.text = "mosqits killed: %d" % Global.score
@@ -30,3 +31,6 @@ func _hide_menu():
 	tween.set_trans(Tween.TRANS_EXPO)
 	await tween.tween_property(downgrade_menu, "position:x", 512, 1.0).finished
 	get_tree().paused = false
+
+func _end_it_all():
+	queue_free()

@@ -63,10 +63,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlc3a"]
 size = Vector2(2, 2)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("anim") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("anim", "noseN") groups=["player"]]
 script = ExtResource("1_2qtve")
 anim = NodePath("AnimatedSprite2D")
 bullet = ExtResource("2_f541u")
+noseN = NodePath("Nose")
 
 [node name="Nose" type="Area2D" parent="."]
 visible = false

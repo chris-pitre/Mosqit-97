@@ -6,6 +6,7 @@ signal hide_menu
 signal show_menu
 
 signal grow_nose
+signal its_over
 
 var score = 0
 var downgrades = 0
@@ -21,8 +22,14 @@ func _init():
 func score_add():
 	score += 1
 	update_ui.emit()
-	if score != 0 and score % 100 == 0 and downgrades < 4:
-		show_menu.emit()
+	if score != 0 and score % 100 == 0:
+		if downgrades < 4:
+			show_menu.emit()
+		else:
+			its_over.emit()
+			var end_screen = preload("res://scenes/end.tscn")
+			var end_screen_instance = end_screen.instantiate()
+			add_child(end_screen_instance)
 	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -37,7 +44,8 @@ func player_default():
 func change_player_stats(downgrade: DowngradeResource):
 	Player.speed += downgrade.speed
 	Player.num_shots += downgrade.num_shots
-	Player.dash = downgrade.dash
+	if downgrade.dash:
+		Player.dash = downgrade.dash
 	Player.nose = downgrade.nose
 	if downgrade.nose:
 		grow_nose.emit()
