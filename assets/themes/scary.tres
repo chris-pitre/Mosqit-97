@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://b1qv8rkmqhi2m"]
+
+[ext_resource type="FontFile" uid="uid://dki4ts67gllks" path="res://assets/msgothic.ttc" id="1_rwwew"]
+[ext_resource type="StyleBox" uid="uid://ds6twt6qgosn0" path="res://assets/themes/scary_panel.tres" id="2_qpc5y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5arxr"]
+bg_color = Color(0.235294, 0.00784314, 0.0156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86fpj"]
+bg_color = Color(0, 0, 0, 1)
+
+[resource]
+Button/fonts/font = ExtResource("1_rwwew")
+Button/styles/focus = ExtResource("2_qpc5y")
+Button/styles/hover = ExtResource("2_qpc5y")
+Button/styles/normal = ExtResource("2_qpc5y")
+Button/styles/panel = ExtResource("2_qpc5y")
+Button/styles/pressed = ExtResource("2_qpc5y")
+Panel/styles/panel = SubResource("StyleBoxFlat_5arxr")
+PanelContainer/styles/panel = ExtResource("2_qpc5y")
+ProgressBar/font_sizes/font_size = 10
+ProgressBar/fonts/font = ExtResource("1_rwwew")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_86fpj")
+ProgressBar/styles/fill = ExtResource("2_qpc5y")
+ProgressBar/styles/panel = ExtResource("2_qpc5y")
+button/styles/panel = ExtResource("2_qpc5y")

@@ -20,3 +20,14 @@ func _on_Bullet_body_entered(body):
 		Global.score_add()
 	queue_free()
 	
+
+
+func _on_Bullet_area_entered(area):
+	if is_player_bullet and area.is_in_group("enemy"):
+		var boom = explosion.instantiate()
+		area.get_parent().add_child(boom)
+		boom.global_position = area.global_position
+		boom.global_rotation = randf_range(0, 2 * PI)
+		area.queue_free()	
+		Global.score_add()
+	queue_free()

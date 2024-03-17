@@ -1,5 +1,5 @@
 class_name Enemy
-extends StaticBody2D
+extends Area2D
 
 var speed: int = 2.0
 var horizontal_move_factor_in_which_they_move_horizontally_variably: float = 0

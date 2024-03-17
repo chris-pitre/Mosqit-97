@@ -1,9 +1,64 @@
-[gd_scene load_steps=3 format=3 uid="uid://btpqws8x3cftc"]
+[gd_scene load_steps=18 format=3 uid="uid://btpqws8x3cftc"]
 
 [ext_resource type="Script" path="res://scenes/ui.gd" id="1_kb5mt"]
 [ext_resource type="FontFile" uid="uid://dki4ts67gllks" path="res://assets/msgothic.ttc" id="1_xl1kg"]
+[ext_resource type="Shader" path="res://assets/shaders/blob.gdshader" id="3_pqr68"]
+[ext_resource type="Theme" uid="uid://b1qv8rkmqhi2m" path="res://assets/themes/scary.tres" id="3_xtuww"]
+[ext_resource type="Shader" path="res://assets/shaders/wave.gdshader" id="4_6wn8g"]
+[ext_resource type="Texture2D" uid="uid://b12b8b136em6e" path="res://assets/sprites/autopsy.png" id="4_rofdj"]
+[ext_resource type="PackedScene" uid="uid://e2inq1k6m7pb" path="res://scenes/downgrade.tscn" id="6_4j641"]
+[ext_resource type="Script" path="res://src/downgrade_resource.gd" id="7_tqtyv"]
 
-[node name="UI" type="Control"]
+[sub_resource type="Gradient" id="Gradient_p5x6d"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0uqx2"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7dcgr"]
+seamless = true
+color_ramp = SubResource("Gradient_p5x6d")
+noise = SubResource("FastNoiseLite_0uqx2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2lstd"]
+shader = ExtResource("3_pqr68")
+shader_parameter/speed = 0.3
+shader_parameter/amplitude = 0.356
+shader_parameter/aliasing = 0.05
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_7dcgr")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3lq5k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ysmv"]
+shader = ExtResource("4_6wn8g")
+shader_parameter/height = 1.0
+shader_parameter/frequency = 3.0
+shader_parameter/speed = 1.0
+
+[sub_resource type="Resource" id="Resource_7gug0"]
+script = ExtResource("7_tqtyv")
+name = "Mosquito Egg Sack"
+speed = 0
+num_shots = 3
+dash = false
+nose = false
+
+[sub_resource type="Resource" id="Resource_wy6kb"]
+script = ExtResource("7_tqtyv")
+name = "Mosquito Ganglia"
+speed = 0
+num_shots = 0
+dash = true
+nose = false
+
+[sub_resource type="Resource" id="Resource_k657t"]
+script = ExtResource("7_tqtyv")
+name = "Proboscis"
+speed = 0
+num_shots = 0
+dash = false
+nose = true
+
+[node name="UI" type="Control" node_paths=PackedStringArray("downgrade_menu", "bar")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +66,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kb5mt")
+downgrade_menu = NodePath("DowngradeMenu")
+bar = NodePath("Humanity Bar")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -23,3 +80,107 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xl1kg")
 theme_override_font_sizes/font_size = 19
 horizontal_alignment = 2
+
+[node name="DowngradeMenu" type="Control" parent="."]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 512.0
+offset_right = 512.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="DowngradeMenu"]
+material = SubResource("ShaderMaterial_2lstd")
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+texture = SubResource("PlaceholderTexture2D_3lq5k")
+
+[node name="SubjectPanel" type="PanelContainer" parent="DowngradeMenu"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -188.0
+offset_right = 248.0
+offset_bottom = 204.0
+grow_vertical = 2
+theme = ExtResource("3_xtuww")
+
+[node name="MarginContainer" type="MarginContainer" parent="DowngradeMenu/SubjectPanel"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SubjectTexture" type="TextureRect" parent="DowngradeMenu/SubjectPanel/MarginContainer"]
+material = SubResource("ShaderMaterial_2ysmv")
+layout_mode = 2
+texture = ExtResource("4_rofdj")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DowngradeMenu"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -188.0
+offset_bottom = 204.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Downgrade" parent="DowngradeMenu/VBoxContainer" instance=ExtResource("6_4j641")]
+layout_mode = 2
+
+[node name="Downgrade2" parent="DowngradeMenu/VBoxContainer" instance=ExtResource("6_4j641")]
+layout_mode = 2
+downgrade_resource = SubResource("Resource_7gug0")
+
+[node name="Downgrade3" parent="DowngradeMenu/VBoxContainer" instance=ExtResource("6_4j641")]
+layout_mode = 2
+downgrade_resource = SubResource("Resource_wy6kb")
+
+[node name="Downgrade4" parent="DowngradeMenu/VBoxContainer" instance=ExtResource("6_4j641")]
+layout_mode = 2
+downgrade_resource = SubResource("Resource_k657t")
+
+[node name="Humanity Bar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_xtuww")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Humanity Bar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_xtuww")
+theme_override_fonts/font = ExtResource("1_xl1kg")
+text = "Humanity"
+vertical_alignment = 1

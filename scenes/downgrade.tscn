@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://e2inq1k6m7pb"]
+
+[ext_resource type="Script" path="res://scenes/downgrade.gd" id="1_1dfb1"]
+[ext_resource type="Theme" uid="uid://b1qv8rkmqhi2m" path="res://assets/themes/scary.tres" id="1_h17sx"]
+[ext_resource type="Resource" uid="uid://bbr1mltdjaedp" path="res://src/wings.tres" id="2_adsld"]
+[ext_resource type="Texture2D" uid="uid://yt6erdf6iqbt" path="res://assets/sprites/heart.png" id="2_ynxs0"]
+
+[node name="Downgrade" type="MarginContainer"]
+script = ExtResource("1_1dfb1")
+downgrade_resource = ExtResource("2_adsld")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+theme = ExtResource("1_h17sx")
+text = "Mosquito Wings"
+icon = ExtResource("2_ynxs0")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

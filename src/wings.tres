@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DowngradeResource" load_steps=2 format=3 uid="uid://bbr1mltdjaedp"]
+
+[ext_resource type="Script" path="res://src/downgrade_resource.gd" id="1_wa4tt"]
+
+[resource]
+script = ExtResource("1_wa4tt")
+name = "Mosquito Wings"
+speed = 50
+num_shots = 0
+dash = false
+nose = false
